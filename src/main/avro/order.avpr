@@ -1,0 +1,33 @@
+{
+     "namespace": "de.silver.avro",
+     "protocol": "OrderProtocol",
+
+     "types": [{
+                 "type": "record",
+                 "name": "Order",
+                 "fields": [
+                     {"name": "customerId", "type": ["string", "null"]},
+                     {"name": "productId", "type": "string"},
+                     {"name": "nrOfItems", "type": ["int", "null"]},
+                     {"name": "comment", "type": ["string", "null"]}
+                 ]
+             },
+             {
+                 "type": "error",
+                 "name": "StoreException",
+                 "fields": [
+                     {"name": "message", "type": ["string", "null"]}
+                 ]
+             }],
+     "messages": {
+         "storeOrder": {
+             "request": [{"name": "order", "type": "Order"}],
+             "response": "string",
+             "errors": ["StoreException"]
+         },
+         "existsProduct": {
+             "request": [{"name": "productId", "type": "string"}],
+             "response": "boolean"
+         }
+     }
+ }
